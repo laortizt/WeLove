@@ -72,13 +72,13 @@
                             </div>
                         </div>  
 
-                        <div class="input-container">
+                        <!-- <div class="input-container">
                             <label class="label">Género</label>
-                            <?php echo $insProfile->list_genres_controller($profile['accountGenre'])?>
-                        </div> 
+                            
+                        </div>  -->
                     </div>
 
-                    <input type="submit" class="btn-kohaku-profile" value="Guardar" />
+                    <input type="submit" class="btn-kohaku" value="Guardar" />
 
                     <div class="RespuestaAjax"></div>
                 </form>          

@@ -9,10 +9,10 @@ session_start(['name' => 'SK']);
 <html>
 
 <head>
-	<title>Kohaku</title>
+	<title>WeLoveSoccer</title>
 
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="icon" type="image/png" href="<?php echo SERVERURL; ?>/assets/img/favicon/favicon.ico" />
+	<!-- <link rel="icon" type="image/png" href="<?php echo SERVERURL; ?>/assets/img/favicon/favicon.ico" /> -->
 	<title><?php echo COMPANY; ?></title>
 	<!-- Import lib -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
@@ -24,20 +24,12 @@ session_start(['name' => 'SK']);
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
 
-	<!-- Estilos calendario -->
-	<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
-	<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
-	<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+
 
 	<!-- End import lib -->
 	<link href="<?php echo SERVERURL; ?>assets/style/dashboard.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/calendar.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/schedule.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/attendance.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/privileges.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/progress.css" rel="stylesheet">
+	<link href="<?php echo SERVERURL; ?>assets/style/tournament.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/profile.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/plans.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/payments.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/newPay.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/kohaku.css" rel="stylesheet">
@@ -81,8 +73,7 @@ session_start(['name' => 'SK']);
 			$lc->force_logout();
 		}
 	?>
-
-		<!-- navbar -->
+		<!-- navbar VIEJO -->
 		<div class="navbar">
 			<!-- nav left -->
 			<ul class="navbar-nav">
@@ -93,35 +84,20 @@ session_start(['name' => 'SK']);
 				</li>
 
 				<li class="nav-item">
-					<img src="<?php echo SERVERURL; ?>assets/img/logokohaku.png" class="image-logo" alt="">
+					<img src="<?php echo SERVERURL; ?>assets/img/logoWelove2.png" class="image-logo" alt="">
 				</li>
 			</ul>
 			<!-- end nav left -->
 
-			<!-- form -->
-			<!-- <form class="navbar-search">
-					<input type="text" name="Search" class="navbar-search-input" placeholder="Buscar...">
-					<i class="fas fa-search"></i>
-				</form> -->
-			<!-- end form -->
 
 			<!-- nav right -->
 			<ul class="navbar-nav nav-right">
 				<li class="nav-item mode">
 					<span><?php echo $_SESSION['role_sk'] ?></span>
 				</li>
-
-				<li class="nav-item mode">
-					<a class="nav-link" href="#" onclick="switchTheme()">
-						<i class="fas fa-moon dark-icon"></i>
-						<i class="fas fa-sun light-icon"></i>
-					</a>
-				</li>
-
 				<li class="nav-item avt-wrapper">
 					<div class="avt dropdown">
-						<img src="./assets/img/undraw_profile.svg" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
-
+						<img src="./assets/img/logoFem.png" alt="Logo fem" class="dropdown-toggle" data-toggle="user-menu">
 						<ul id="user-menu" class="dropdown-menu">
 							<li class="dropdown-menu-item">
 								<a href="<?php echo SERVERURL; ?>profile" class="dropdown-menu-link">
@@ -133,9 +109,6 @@ session_start(['name' => 'SK']);
 									<span>Perfil</span>
 								</a>
 							</li>
-
-
-
 							<li class="dropdown-menu-item">
 								<a href="<?php echo $lc->encryption($_SESSION['token_sk']); ?>" class="dropdown-menu-link btn-logout">
 									<div>
@@ -145,6 +118,7 @@ session_start(['name' => 'SK']);
 								</a>
 							</li>
 						</ul>
+						
 					</div>
 				</li>
 			</ul>
@@ -167,29 +141,21 @@ session_start(['name' => 'SK']);
 				<?php endif; ?>
 
 				<li class="sidebar-nav-item">
-					<a href="<?php echo SERVERURL; ?>calendar" class="sidebar-nav-link">
+					<a href="<?php echo SERVERURL; ?>equipment" class="sidebar-nav-link">
 						<div>
 							<i class="far fa-calendar-alt"></i>
 						</div>
-						<span>Clases</span>
-					
+						<span>Equipos</span>
+
 					</a>
 				</li>
+				
 				<li class="sidebar-nav-item">
-					<a href="<?php echo SERVERURL; ?>attendance" class="sidebar-nav-link">
+					<a href="<?php echo SERVERURL; ?>tournament" class="sidebar-nav-link">
 						<div>
-							<i class="far fa-calendar-alt"></i>
+							<i class="fas fa-money-check-alt"></i>
 						</div>
-						<span>Asistencia</span>
-					
-					</a>
-				</li>
-				<li class="sidebar-nav-item">
-					<a href="<?php echo SERVERURL; ?>plans" class="sidebar-nav-link">
-						<div>
-						<i class="fas fa-money-check-alt"></i>
-						</div>
-						<span>Planes</span>
+						<span>Campeonatos</span>
 					</a>
 				</li>
 				<li class="sidebar-nav-item">
@@ -201,23 +167,6 @@ session_start(['name' => 'SK']);
 					</a>
 				</li>
 
-				<li class="sidebar-nav-item">
-					<a href="<?php echo SERVERURL; ?>progress"  class="sidebar-nav-link">
-						<div>
-							<i class="fas fa-check-circle"></i>
-						</div>
-						<span>Progreso</span>
-					</a>
-				</li>
-
-				<li class="sidebar-nav-item">
-					<a href="#" class="sidebar-nav-link">
-						<div>
-							<i class="far fa-file-alt"></i>
-						</div>
-						<span>Trámites</span>
-					</a>
-				</li>
 			</ul>
 		</div>
 		<!-- end sidebar -->

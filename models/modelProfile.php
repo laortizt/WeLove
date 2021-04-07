@@ -27,7 +27,7 @@
         // Traer datos de un perfil usando el accountCode
         public function get_profile_model($code) {
             $sql= mainModel::connect()->prepare("SELECT idAccount, accountCode, accountEmail, accountDocumentType,
-                accountDni, accountFirstName, accountLastName, accountAddress, accountPhone, accountGenre
+                accountDni, accountFirstName, accountLastName, accountAddress, accountPhone 
                 FROM accounts WHERE accountCode=:code");
             $sql->bindParam(':code', $code);
             $sql->execute();
@@ -40,7 +40,7 @@
             $sql=mainModel::connect()->prepare("UPDATE accounts 
                 SET accountDocumentType=:DocumentType, accountDni=:Dni, accountFirstName=:FirstName,
                     accountLastName=:LastName, accountAddress=:Address, accountPhone=:Phone,
-                    accountGenre=:Genre
+                    
                 WHERE idAccount=:IdAccount");
             $sql->bindParam(":DocumentType",$data['DocumentType']);
             $sql->bindParam(":Dni",$data['Dni']);
@@ -48,7 +48,6 @@
             $sql->bindParam(":LastName",$data['LastName']);
             $sql->bindParam(":Address",$data['Address']);
             $sql->bindParam(":Phone",$data['Phone']);
-            $sql->bindParam(":Genre",$data['Genre']);
             $sql->bindParam(":IdAccount",$data['Id']);
             
             $sql->execute();

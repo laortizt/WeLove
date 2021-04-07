@@ -11,7 +11,7 @@ $insAdmin = new controllerAdmin();
 		<div class="col-12 col-m-12 col-sm-12">
 			<div class="card">
 				<div class="card-content">
-					<h2>Lista de usuarios</h2>
+					<h2>Lista de usuarios Registrados</h2>
 					<!-- DESDE AQUI -->
 				
 
@@ -28,7 +28,7 @@ $insAdmin = new controllerAdmin();
 					<?php
 					$pages = explode("/", $_GET['page']);
 					
-					echo $insAdmin->pages_admin_controller(0, 10, $_SESSION['role_sk'], 'code');
+					// echo $insAdmin->pages_admin_controller(0, 10, $_SESSION['role_sk'], 'code');
 					?>
 				</div>
 				

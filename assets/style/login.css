@@ -5,7 +5,12 @@
   box-sizing: border-box;
 }
 
-body,
+body{
+  
+  background: -webkit-linear-gradient(to right, #f64f59cc, #c471edcc); 
+  background: linear-gradient(to right, #f64f59cc, #c471edcc);
+  
+}
 input {
   font-family: "Poppins", sans-serif;
 }
@@ -13,9 +18,11 @@ input {
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background: -webkit-linear-gradient(to right, #f64f59cc, #c471edcc); 
+  background: linear-gradient(to right, #f64f59cc, #c471edcc);
   min-height: 100vh;
   overflow: hidden;
+  background-image: url(/assets/img/balon.jpg);
 }
 
 .container.login-container {
@@ -66,7 +73,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2.5rem;
-  color: rgb(255, 16, 16);
+  color: white;
   margin-bottom: 10px;
   font-family: 'Anton', sans-serif;
 }
@@ -173,8 +180,8 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #131212 0%, #353535 100%);
-  /* background-image: linear-gradient(-45deg, #e20404 0%, #f83434 100%); */
+  /* background-image: linear-gradient(-45deg, #070707 0%, #353535 100% );  */
+  background: url(../img/balon1.png) right 90% / 70% no-repeat;
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -192,9 +199,8 @@ form.sign-in-form {
 
 .btn-kohaku-login {
   margin-top: 10px;
-  background-color: transparent;
-  background-image: url(./../img/btnGris.png);
-  background-size: 100% 100%;
+  background-color: #0df4dfe6;
+ background-size: 100% 100%;
   background-repeat: no-repeat;
   color: var(--black);
   font-size: 2rem;
@@ -205,10 +211,8 @@ form.sign-in-form {
   padding: 0.5rem 1rem;
 }
 
-
-
 .btn-kohaku-login:hover{
-  background-image: url(./../img/btnRojo.png);
+  
   color: white
 }
 
@@ -218,16 +222,19 @@ form.sign-in-form {
 
 .panel {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
+  /* flex-direction: column; */
+  /* align-items: flex-end;
+  justify-content: space-around; */
   text-align: center;
   z-index: 6;
+  margin-left: 40px;
 }
 
 .left-panel {
+  display: flex;
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
+  /* padding: 1rem 40% 1rem 4%; */
   align-items: center;
 }
 
@@ -246,6 +253,7 @@ form.sign-in-form {
   font-weight: 600;
   line-height: 1;
   font-size: 2rem;
+  color: black;
 }
 
 .panel p {
@@ -436,5 +444,7 @@ form.sign-in-form {
   }
   .subtitle-login{
     margin: left;
+    font: 1rem;
+   
   }
 }

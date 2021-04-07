@@ -1,7 +1,7 @@
 <?php
 //Conexión de la base de datos
     const SERVER="localhost";
-    const DB="dbkohaku";
+    const DB="welove";
     //Adriana
     const USER="root";
     const PASS="50430";

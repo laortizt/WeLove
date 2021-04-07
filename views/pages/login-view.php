@@ -16,7 +16,7 @@
     <div class="container login-container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" method="post" autocomplete="off" class="sign-in-form">
+          <form action="" method="post" autocomplete="off" class="sign-in-form" formulario-ajax>
             <h2 class="title">Iniciar sesión</h2>
 
             <label for="">Usuario</label>
@@ -73,10 +73,8 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <img src="<?php echo SERVERURL; ?>assets/img/logo.png" class="image" alt="" />
-
+          <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image" alt=""/>
             <h3>¿Nuevo por aquí?</h3>
-
             <button class="btn-kohaku-login" id="sign-up-btn">
               Regístrate
             </button>          
@@ -85,13 +83,9 @@
 
         <div class="panel right-panel">
           <div class="content">
-            <img src="<?php echo SERVERURL; ?>assets/img/logo.png" class="image" alt=""/>
-            
-            <div class="texto-login">
-              <h3>¿Ya eres miembro?</h3>
-            </div>
-            
-            <button class="btn-kohaku-login" id="sign-in-btn">
+            <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image" alt=""/>
+            <h3>¿Ya eres miembro?</h3>
+             <button class="btn-kohaku-login" id="sign-in-btn">
               Iniciar sesión
             </button>
           </div>

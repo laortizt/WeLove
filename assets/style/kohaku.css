@@ -79,7 +79,6 @@ body{
 }
 /* ---HEADER PAGINAS--- */
 .header-class {
-  background: #0dad83;
   height: 60px;
   display: flex;
   align-items: center;
@@ -90,3 +89,34 @@ body{
   justify-content: space-between;    
 }
 
+.title {
+   font-size: 2.2rem;
+    color:#ee748c;
+    margin-bottom: 24px;
+    font-family: 'Anton', sans-serif;
+    align-self: flex-start;    
+
+}
+
+.btn-kohaku{
+    margin-top: 10px;
+    background-color:#e24e83;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: var(--black);
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    color:whith;
+    padding: 0.5rem 1rem;
+    align-self: flex-end;
+  }
+  
+  .btn-kohaku:hover{
+    background-color: rgb(53, 211, 215);;
+  }
+  
+  .btn-kohaku:focus {
+    box-shadow: none;
+  }

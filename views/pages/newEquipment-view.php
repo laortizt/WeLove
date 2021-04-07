@@ -8,13 +8,11 @@
         <div class="card">
 			<div class="card-content">
                 <div class="header-class">
-                    <h1 class="title">Registar Pago</h1>
+                    <h1 class="title">Crear Equipo</h1>
                     <div>
-                        <a href="<?php echo SERVERURL; ?>calendar" class="btn-kohaku">
-                            <i class="fas fa-trash-alt"></i> Eliminar
-                        </a>
+                        
 
-                        <a href="<?php echo SERVERURL; ?>payments" class="btn-kohaku">
+                        <a href="<?php echo SERVERURL; ?>equipment" class="btn-kohaku">
                             <i class="far fa-file"></i> Registros
                         </a>
                     </div>
@@ -29,37 +27,34 @@
                                 <input type="date" name="date-newpay" required="" />
                             </div>
                         </div>
-                        
                         <div class="input-container">
-                            <label class="label">Documento</label>
+                            
+                            <label class="label">Nombre del Equipo</label>
                             <div class="input-field">
-                                <input type="texbox" name="dni-newpay" minlength="1" maxlength="100"/>
+                                <input type="texbox" name="name-newequipment" minlength="1" maxlength="100"/>
                             </div>
                         </div>
-
+                        
                         <div class="input-container">
-                            <label class="label">Trámite</label>
+                            <label class="label">Categoría</label>
                             <?php echo $insPayment->list_procedure_controller() ?> 
                         </div>
 
-                        
-
-                        <div class="input-container">
-                            <label class="label">Valor</label>
-                            <div class="input-field">
-                                <i class="far fa-dollar-sign"></i>
-                                <input type="text" readonly value="" id="price-newpay" name="price-newpay" required=""/>
-                            </div>
-                        </div>
-
-                    
                         <div class="input-container">
                             
-                            <label class="label">Observaciones</label>
+                            <label class="label">Nombre Capitana</label>
                             <div class="input-field">
                                 <input type="texbox" name="observation-newpay" minlength="1" maxlength="100"/>
                             </div>
                         </div>
+
+                        <div class="input-container">                        
+                            <label class="label">Telefono</label>
+                            <div class="input-field">
+                                <i class="fas fa-phone-alt"></i>
+                                <input type="text"  name="phone-profile" required="" pattern="[0-9]{7,20}"/>
+                            </div>
+                        </div> 
 
                     </div>
 
