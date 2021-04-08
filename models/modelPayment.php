@@ -50,8 +50,9 @@
 
             return $sql;
         }
-         //Crear Pagos
-         public function create_payment_model($datos) {
+
+        //Crear Equipo
+        public function create_payment_model($datos) {
             $sql=mainModel::connect()->prepare("INSERT INTO payments 
                 (paymentDate, paymentProcedure,  paymentPrice,
                 paymentObservation, paymentAccount)

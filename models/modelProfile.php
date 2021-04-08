@@ -10,13 +10,13 @@
     //MODELO PARA CREAR USUARIO completar info usuario
     class modelProfile extends mainModel{
 
-        public function list_genres_model() {
-            $conexion= mainModel::connect();
+        // public function list_genres_model() {
+        //     $conexion= mainModel::connect();
 
-            //Obtiene los géneros registrados
-            $datos = $conexion->query("SELECT * FROM genre");
-            return $datos->fetchAll();
-        }
+        //     //Obtiene los géneros registrados
+        //     $datos = $conexion->query("SELECT * FROM genre");
+        //     return $datos->fetchAll();
+        // }
 
         public function list_typeDocuments_model() {
             //Obtiene los géneros registrados
@@ -39,8 +39,7 @@
         public function update_profile_model($data) {
             $sql=mainModel::connect()->prepare("UPDATE accounts 
                 SET accountDocumentType=:DocumentType, accountDni=:Dni, accountFirstName=:FirstName,
-                    accountLastName=:LastName, accountAddress=:Address, accountPhone=:Phone,
-                    
+                    accountLastName=:LastName, accountAddress=:Address, accountPhone=:Phone
                 WHERE idAccount=:IdAccount");
             $sql->bindParam(":DocumentType",$data['DocumentType']);
             $sql->bindParam(":Dni",$data['Dni']);

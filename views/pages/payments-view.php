@@ -11,12 +11,7 @@ $insPayment = new controllerPayment();
 			<div class="card-content">
 				<div class="header-class">
 					<h1 class="title">Lista de Pagos</h1>
-
-					<div>
-						<a href="<?php echo SERVERURL; ?>newPay" class="btn-kohaku">
-							<i class="fas fa-plus-circle"></i> Nuevo
-						</a>
-					</div>
+					<?php include "./views/modules/menuPayments.php"; ?> 
 				</div>
 						
 				

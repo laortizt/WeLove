@@ -40,31 +40,7 @@
             return $select;
         }
         //funciòn que llama la lista de generos de model
-        public function list_genres_controller($userCurrentGenre) {
-            $genres = modelProfile::list_genres_model();
-
-            $select = '<select class="input-field" name="genre-profile" required="">';
-            
-            foreach($genres as $genre){
-                if ($genre['idGenre'] == $userCurrentGenre) {
-                    $select.='
-                        <option value="'.$genre['idGenre'].'" selected="">'
-                        .$genre['nameGenre'].
-                        '</option>
-                    ';
-                } else {
-                    $select.='
-                        <option value="'.$genre['idGenre'].'">'
-                        .$genre['nameGenre'].
-                        '</option>
-                    ';
-                }
-            }
-
-            $select.='</select>';
-
-            return $select;
-        }
+        
 
         //funciòn que guarda la informaciòn del perfil
         public function save_profile(){
@@ -76,7 +52,7 @@
             $address= mainModel::clean_string($_POST['adress-profile']); 
             $email= mainModel::clean_string($_POST['email-profile']);
             $phone= mainModel::clean_string($_POST['phone-profile']);
-            $genre= mainModel::clean_string($_POST['genre-profile']);
+            
 
             // Validar condiciones
             $profilesByDni=modelProfile::find_dni($Dni);
@@ -116,7 +92,7 @@
                         "LastName"=>$lastName,
                         "Address"=>$address,
                         "Phone"=>$phone,
-                        "Genre"=>$genre
+                        
                     ];
     
                     $saveProfile = modelProfile::update_profile_model($dataProfile);

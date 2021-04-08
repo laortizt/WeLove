@@ -16,7 +16,7 @@
     <div class="container login-container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" method="post" autocomplete="off" class="sign-in-form" formulario-ajax>
+          <form action="" method="post" autocomplete="off" class="sign-in-form" >
             <h2 class="title">Iniciar sesión</h2>
 
             <label for="">Usuario</label>
@@ -57,6 +57,11 @@
             </div>
 
             <label class="label">Contraseña</label>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" required="" name="passwordSignUp"/>
+            </div>
+            <label class="label">Repetir Contraseña</label>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" required="" name="passwordSignUp"/>

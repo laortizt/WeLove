@@ -54,7 +54,7 @@
                 }else if($_SESSION['role_sk']==="Instructor") {
                     $url=SERVERURL."calendar";
                 } else{
-                    $url=SERVERURL."schedule";
+                    $url=SERVERURL."newEquipment";
                 }
 
                 return '<script> window.location= " '.$url.'" </script>';

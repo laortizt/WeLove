@@ -1,6 +1,12 @@
 <?php
-require_once "./controller/controllerPayment.php";
-$insPayment = new controllerPayment();
+require_once "./controller/controllerEquipment.php";
+$insEquipment = new controllerEquipment();
+?>
+
+<?php
+	if($_SESSION['role_sk'] != "Administrador") {
+		echo'<script> window.location.href="'.SERVERURL.'newEquipment" </script>';
+	}
 ?>
 
 <!-- CMABIAR POR EL CONTROLADOR DE ASISTENCIA -->
@@ -10,26 +16,18 @@ $insPayment = new controllerPayment();
 		<div class="card">
 			<div class="card-content">
 				<div class="header-class">
-					<h1 class="title">Lista de equipos registrados</h1>
-
-					<div>
-						<a href="<?php echo SERVERURL; ?>newEquipment" class="btn-kohaku">
-							<i class="fas fa-plus-circle"></i> Nuevo
-						</a>
-					</div>
+					<h1 class="title">Equipos registrados</h1>
+					<?php include "./views/modules/menuEquipment.php"; ?> 
 				</div>
-						
-				
 
 				<?php
 					$pages = explode("/", $_GET['page']);
 					
-					echo $insPayment->pages_payment_controller(0, 10, $_SESSION['role_sk'], 'code');
-					?>
-				
+					echo $insEquipment->pages_equipment_controller(0, 10, $_SESSION['role_sk'], 'code');
+				?>				
 			</div>
 		</div>
 	</div>
 </div>
 
-<script src="<?php echo SERVERURL; ?>assets/script/payments.js"></script>
+<script src="<?php echo SERVERURL; ?>assets/script/equipment.js"></script>

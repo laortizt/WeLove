@@ -33,6 +33,7 @@ session_start(['name' => 'SK']);
 	<link href="<?php echo SERVERURL; ?>assets/style/payments.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/newPay.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/kohaku.css" rel="stylesheet">
+	
 
 	<link href="<?php echo SERVERURL; ?>assets/sweet-alert/sweetalert2.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/glyphicons/glyphicons.css" rel="stylesheet">

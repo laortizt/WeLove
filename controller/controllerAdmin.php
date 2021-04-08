@@ -7,217 +7,287 @@
         require_once "./models/modelAdmin.php";
     }
 
-//clase heredada de modelo user
+//clase heredada de modelo administrador
     class controllerAdmin extends modelAdmin{
-
-        //DESDE AQUI modificardatos con os del formulario
-        public function add_controller_User(){
-            $typeDocument= mainModel::clean_string($_POST['DocumentType']);
-            $Dni= mainModel::clean_string($_POST['Dni']);
-            $FirstName= mainModel::clean_string($_POST['FirstName']); 
-            $LastName= mainModel::clean_string($_POST['LastName']);
-            $Addres= mainModel::clean_string($_POST['Adress']); 
-            $Phone= mainModel::clean_string($_POST['Phone']);
-            $Email= mainModel::clean_string($_POST['Email']);
-            $Role= mainModel::clean_string($_POST['Role']);
-            $State= mainModel::clean_string($_POST['State']);
-            
+        //controlador para agregar administrador
+        public function add_controller_Admin(){
+            //+++estos datos era del primer formulario y se modifico,s se estan usando estos datos???
+            $typeDocument= mainModel::clean_string($_POST['dni']);
+            $Dni= mainModel::clean_string($_POST['dni']);
+            $firstName= mainModel::clean_string($_POST['FirstName']); 
+            $lastName= mainModel::clean_string($_POST['LastName']);
+            $addres= mainModel::clean_string($_POST['Adress']); 
+            $phone= mainModel::clean_string($_POST['Phone']);
+            $user= mainModel::clean_string($_POST['User']);
+            $email= mainModel::clean_string($_POST['Email']);
+            $password= mainModel::clean_string($_POST['Pass1']);
+            $privileges= mainModel::clean_string($_POST['Privileges']);
+            //cambiar el contenido de la última fila
+            ;
+             
             //validación contraseñas
-        
-            //validación documento registrado
-            $consult1= mainModel::run_simple_query("SELECT accountDni
-                FROM accounts WHERE accountDni ='$Dni'");
-
-            if($consult1->rowCount()>=1){
+            if($password!=$password){
                 $alert=[
                     "alert"=>"simple",
                     "title"=>"Ocurrio un error inesperado",
-                    "text"=>"El número de identificación ya está registrado",
+                    "text"=>"Las contraseñas no coinciden",
                     "type"=>"error"
                 ];
             }else{
-                //validación correo
-                if($Email!=""){
-                    $consult2=mainModel::run_simple_query("SELECT accountEmail
-                    FROM accounts WHERE accountEmail= '$Email'");  
-                    //variable correo-cuenta- columnas afectadas
-                    $cc=$consult2->rowCount();
-                }else{
-                    //si no existe es 0
-                    $cc=0;
-                }
-                if($cc>=1){
+                //validación documento registrado
+                $consult1=mainModel::run_simple_query("SELECT accountDni
+                    FROM accounts WHERE accountDni ='$Dni'");
+
+                if($consult1->rowCount()>=1){
                     $alert=[
                         "alert"=>"simple",
                         "title"=>"Ocurrio un error inesperado",
-                        "text"=>"El correo ingresado está registrado",
+                        "text"=>"El número de Identificación ya está registrado",
                         "type"=>"error"
                     ];
                 }else{
-    
-                //validación cuantos registros tengo
-                $consult4=mainModel::run_simple_query("SELECT idAccount
-                    FROM accounts");
-                    //variable para guardar la consulta
-                $num=($consult4->rowCount())+1;
-                    // generar código aletaorio de 10 cifras AC: Account
-                $code=mainModel::generate_random_code("AC", 10, $num);
-
-                // encriptar la contraseña +++LO NECESITA EL ADMIN???
-                // $password=mainModel::encryption($password);
-
-                // Crar un array para ingresar una cuenta
-                $dataAC=[
-                    "Code"=>$code,
-                    "Email"=>$Email,
-                    // "Pasword"=>$password,
-                    "Role"=>3,
-                    "State"=>1,
-                    "FirstName"=>$FirstName,
-                    "LastName"=>$LastName,
-                ];
-                $saveAccount=modelAdmin::add_user_account($dataAC);
-                    
-                    // Comprobar si se registro la cuenta
-                    if($saveAccount->rowCount()>=1){
-                        $alert=[
-                            "alert"=>"limpiar",
-                            "title"=>"Usuario registrado",
-                            "text"=>"El usuario se creo con Éxito",
-                            "type"=>"success"
-                        ];
+                    //validación correo
+                    if($password!=""){
+                        $consult2=mainModel::run_simple_query("SELECT accountEmail
+                        FROM accounts WHERE accountEmail= '$password'");  
+                        //variable correo-cuenta- columnas afectadas
+                        $cc=$consult2->rowCount();
                     }else{
+                        //si no existe es 0
+                        $cc=0;
+                    }
+                    if($cc>=1){
                         $alert=[
                             "alert"=>"simple",
                             "title"=>"Ocurrio un error inesperado",
-                            "text"=>"El usuario no se pudo registrar",
+                            "text"=>"El correo ingresado está registrado",
                             "type"=>"error"
                         ];
+                    }else{
+                        //validación de usuario
+                        $consult3=mainModel::run_simple_query("SELECT accountEmail
+                            FROM accounts WHERE accountEmail = '$user'");
+
+                        if($consult3->rowCount()>=1){
+                            // $alert=[
+                            //     "alert"=>"simple",
+                            //     "title"=>"Ocurrio un error inesperado",
+                            //     "text"=>"El usuario ingresado está registrado",
+                            //     "type"=>"error"
+                            // ];
+                        }else{
+                            //validación cuantos registros tengo
+                            $consult4=mainModel::run_simple_query("SELECT idAccount
+                                FROM accounts");
+                              //variable para guardar la consulta
+                            $num=($consult4->rowCount())+1;
+                             // generar código aletaorio de 10 cifras AC: Account
+                            $code=mainModel::generate_random_code("AC", 10, $num);
+
+                            // encriptar la contraseña
+                            $password=mainModel::encryption($password);
+
+                            // Crar un array para ingresar una cuenta
+                            $dataAC=[
+                                "Code"=>$code,
+                                "Email"=>$email,
+                                "Pasword"=>$password,
+                                "Role"=>1,
+                                "State"=>1,
+                                "FirstName"=>$firstName,
+                                "LastName"=>$lastName
+                            ];
+                            $saveAccount=modelAdmin::add_admin_account($dataAC);
+                            // Comprobar si se registro la cuenta
+
+                            if($saveAccount->rowCount()>=1){
+                                $alert=[
+                                    "alert"=>"limpiar",
+                                    "title"=>"Administrador registrado",
+                                    "text"=>"El administrador se creo con Éxito",
+                                    "type"=>"success"
+                                ];
+                            } else {
+                                $alert=[
+                                    "alert"=>"simple",
+                                    "title"=>"Ocurrio un error inesperado",
+                                    "text"=>"La cuenta no se pudo registrar",
+                                    "type"=>"error"
+                                ];
+                            }
+                        }
                     }
                 }
             }
-           return mainModel::sweet_alert($alert);
+            
+            return mainModel::sweet_alert($alert);
         }
     
-        
-        // Traer datos de un perfil usando el accountCode (LO TRAJE DE PROFILE)
-        public function get_user_model($code) {
-            $sql= mainModel::connect()->prepare("SELECT idAccount, accountCode, accountDocumentType,
-                accountDni, accountFirstName, accountLastName, accountAddress, accountPhone,  accountEmail,
-                accountrRole,accountState
-                FROM accounts WHERE accountCode=:code");
-            $sql->bindParam(':code', $code);
-            $sql->execute();
+        public function add_admin_incomplete_data() {
+            $alert=[
+                "alert"=>"simple",
+                "title"=>"Información incompleta",
+                "text"=>"Diligencie todos los campos",
+                "type"=>"error"
+            ];
 
-            return $sql->fetch();
+            return mainModel::sweet_alert($alert);
         }
 
-        //Actualizar perfil
-        public function update_user_model($data) {
-            $sql=mainModel::connect()->prepare("UPDATE accounts 
-                SET accountDocumentType=:DocumentType, accountDni=:Dni, accountFirstName=:FirstName,
-                    accountLastName=:LastName, accountAddress=:Address, accountPhone=:Phone,
-                     accountEmail=:Email, accountRole=:Role, accountState=:State
-                WHERE idAccount=:IdAccount");
-            $sql->bindParam(":DocumentType",$data['DocumentType']);
-            $sql->bindParam(":Dni",$data['Dni']);
-            $sql->bindParam(":FirstName",$data['FirstName']);
-            $sql->bindParam(":LastName",$data['LastName']);
-            $sql->bindParam(":Address",$data['Address']);
-            $sql->bindParam(":Phone",$data['Phone']);
-            $sql->bindParam(":Email",$data['Email']);
-            $sql->bindParam(":Role",$data['Role']);
-            $sql->bindParam(":State",$data['State']);
-            $sql->bindParam(":IdAccount",$data['Id']);
+         //controlador para páginar administrador
+        public function pages_admin_controller($pages, $register, $role, $code){
+            $pages=mainModel::clean_string($pages);
+            $register=mainModel::clean_string($register);
+            $role=mainModel::clean_string($role);
+            $code=mainModel::clean_string($code);
+
+            $table="";
+
+            $page=(isset($page)&& $page>0) ? (int) $page : 1;
+            $start=($pages>0)? (($pages*$register)-$register) : 0;
+            $conexion= mainModel::connect();
+
+            //Calcula cúantos registros hay en la consutla
+            //aqui en la consulta el admin 1 es el principal del sistema y  NO se va a seleccionar
+            $datos = $conexion->query("SELECT SQL_CALC_FOUND_ROWS * FROM accounts a
+                LEFT JOIN documenttype dt ON (a.accountDocumentType = dt.idDocumentType)
+                LEFT JOIN `role` r ON (a.accountRole = r.idRole)
+                WHERE a.idAccount!='1' ORDER BY a.accountFirstName ASC LIMIT $start, $register");
+            $datos=$datos->fetchAll();
+            $total=$conexion->query("SELECT found_rows()");
+            $total=(int) $total->fetchColumn();
+
+            //calcular el otal de páginas
+            $Npages= ceil($total/$register);
+            $table.='<div>
+            <table>
+                <thead> 
+                    <td>Documento</td>
+                    <td>Número</td>
+                    <td>Nombres</td>
+                    <td>Apellidos</td>
+                    <td>Dirección</td>
+                    <td>Teléfono</td>
+                    <td>Correo</td>
+                    <td>Rol</td>
+                    <td>Estado</td>
+                </thead>
+                <tbody>
+            ';
             
-            $sql->execute();
-
-            return $sql;
-        }
-
-        //Buscar dni (buscador)???
-        public function find_dni($dni) {
-            //Obtiene los perfiles que coincidan con el dni enviado
-            $datos = mainModel::connect()->query("SELECT idAccount, accountDni, accountCode
-                FROM accounts WHERE accountDni ='$dni'");
-            return $datos->fetchAll();
-        }
-
-        public function list_typeDocument_controller($userCurrentDocType){
-            $documentTypes = modelAdmin::list_typeDocuments_model();
-
-            $select = '<select class="input-field" name="typeDocument-profile" required="">';
-            
-            foreach($documentTypes as $documentType){
-                if ($documentType['idDocumentType'] == $userCurrentDocType) {
-                    $select.='
-                        <option value="'.$documentType['idDocumentType'].'" selected="">'
-                        .$documentType['nameDocumentType'].
-                        '</option>
+            if($total>=1 && $pages<=$Npages){
+                $count=$start+1;
+                foreach($datos as $rows){
+                    $table.='
+                    <tr>
+                        <td>'.$rows['nameDocumentType'].'</td>
+                        <td>'.$rows['accountDni'].'</td>
+                        <td>'.$rows['accountFirstName'].'</td>
+                        <td>'.$rows['accountLastName'].'</td>
+                        <td>'.$rows['accountAddress'].'</td>
+                        <td>'.$rows['accountPhone'].'</td>
+                        <td>'.$rows['accountEmail'].'</td>
+                        <td>'.$rows['roleName'].'</td>
+                        <td>'.($rows['accountState'] == 1 ? "Activo" : "Inactivo").'</td>
+                    </tr>
                     ';
-                } else {
-                    $select.='
-                        <option value="'.$documentType['idDocumentType'].'">'
-                        .$documentType['nameDocumentType'].
-                        '</option>
-                    ';
+                    $count++;
                 }
+            }else{
+                $table.='
+                    <tr>
+                        <td colspan="15"> No hay registros en el sistema</td>
+                    </tr>';
             }
+            $table.='</tbody> </table> </div>';
 
-            $select.='</select>';
-
-            return $select;
-        }
-
-        public function list_role_controller($userCurrentGenre) {
-            $roles= modelAdmin::list_roles_model();
-
-            $select = '<select class="input-field" name="role-newUser" required="">';
-            
-            foreach($roles as $role){
-                if ($role['idRole'] == $userCurrentGenre) {
-                    $select.='
-                        <option value="'.$role['idRole'].'" selected="">'
-                        .$role['Rolename'].
-                        '</option>
-                    ';
-                } else {
-                    $select.='
-                        <option value="'.$role['idRole'].'">'
-                        .$role['Rolename'].
-                        '</option>
-                    ';
-                }
-            }
-
-            $select.='</select>';
-
-            return $select;
-        }
-
-        public function list_states_controller($userCurrentState) {
-            $states= modelAdmin::list_states_model();
-
-            $select = '<select class="input-field" name="state-newUser" required="">';
-            
-            foreach($states as $state){
-                if ($state['idState'] == $userCurrentState) {
-                    $select.='
-                        <option value="'.$state['idState'].'" selected="">'
-                        .$state['idState'].
-                        '</option>
-                    ';
-                } else {
-                    $select.='
-                        <option value="'.$state['idState'].'">'
-                        .$state['idState'].
-                        '</option>
-                    ';
-                }
-            }
-
-            $select.='</select>';
-
-            return $select;
-        }
+            return $table;
     }
+
+    public function update_admin_controller() {
+        // Limpiar info del formulario
+        $typeDocument= mainModel::clean_string($_POST['typeDocument-profile']);
+        $Dni= mainModel::clean_string($_POST['dni-profile']);
+        $firstName= mainModel::clean_string($_POST['firstname-profile']); 
+        $lastName= mainModel::clean_string($_POST['lastname-profile']);
+        $address= mainModel::clean_string($_POST['adress-profile']); 
+        $email= mainModel::clean_string($_POST['email-profile']);
+        $phone= mainModel::clean_string($_POST['phone-profile']);
+        $genre= mainModel::clean_string($_POST['genre-profile']);
+
+        // Validar la info que llega
+        $profilesByDni=modelAdmin::find_dni($Dni);
+
+        if (count($profilesByDni) > 1 || 
+            (count($profilesByDni) == 1 && $profilesByDni[0]['accountDni'] != $Dni) )
+        {
+            $alert=[
+                "alert"=>"simple",
+                "title"=>"Ocurrio un error inesperado",
+                "text"=>"El número de Identificación ya está registrado",
+                "type"=>"error"
+            ];
+        } else {
+            // Buscar por correo
+            $profilesByEmail=modelAdmin::find_email($email);
+        
+            // Si existe uno, verificar si su account code coincide con el usuario actual
+            if(count($profilesByEmail) != 1){
+                // Si no coincide, error
+                $alert=[
+                    "alert"=>"simple",
+                    "title"=>"Ocurrio un error inesperado",
+                    "text"=>"Usuario no encontrado",
+                    "type"=>"error"
+                ];
+            } else if ($_SESSION['role_sk'] != "Administrador") {
+                // El usuario logueado no es Admin, no puede editar otros usuarios
+                $alert=[
+                    "alert"=>"simple",
+                    "title"=>"Acción no permitida",
+                    "text"=>"No tiene privilegios suficientes para editar usuarios",
+                    "type"=>"error"
+                ];
+            } else {
+                // Si coincide, proceder con la actualización
+                $id = $profilesByEmail[0]['idAccount'];
+
+                // Construir el objeto que se envía al modelo
+                // Si todas se cumplen, llamar al modelo para que ejecute el cambio, enviando la info en un arreglo
+                $data = [
+                    "Id"=>$id,
+                    "DocumentType"=>$typeDocument,
+                    "Dni"=>$Dni,
+                    "FirstName"=>$firstName,
+                    "LastName"=>$lastName,
+                    "Address"=>$address,
+                    "Phone"=>$phone,
+                    
+                ];
+
+                // LLamar al modelo
+                $saveAdmin = modelAdmin::update_admin_model($data);
+
+                // Verificar respuesta del modelo y construir la respuesta para la vista
+                if($saveAdmin->rowCount() >= 1){
+                    $alert=[
+                        "alert"=>"limpiar",
+                        "title"=>"Actualizar perfil",
+                        "text"=>"El perfil se ha actualizado exitósamente.",
+                        "type"=>"success"
+                    ];
+                }else {
+                    $alert=[
+                        "alert"=>"simple",
+                        "title"=>"Actualizar perfil",
+                        "text"=>"No se pudo actualizar el perfil, verifique los campos e intente de nuevo.",
+                        "type"=>"error"
+                    ];
+                }
+            }
+        }
+
+        return mainModel::sweet_alert($alert);
+    }
+
+}
