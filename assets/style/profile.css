@@ -20,12 +20,5 @@
     flex-wrap: wrap;
   }
 
-  .input-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-  }
-
   
   

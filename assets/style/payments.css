@@ -7,13 +7,6 @@
   align-items: center;
 }
 
-.payment {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
 table {
   border: 1px solid #ccc;
   width: 100%;
