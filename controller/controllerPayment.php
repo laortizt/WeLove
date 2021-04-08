@@ -123,7 +123,6 @@
                     <td>Valor</td>
                     <td>Observaciones</td>
                     <td>Nombre</td>
-                    <td colspan="1">Acciones</td>
                 </thead>
                 <tbody>
             ';
@@ -139,8 +138,6 @@
                         <td>'.$rows['paymentPrice'].'</td>
                         <td>'.$rows['paymentObservation'].'</td>
                         <td>'.$rows['accountFirstName'].' '.$rows['accountLastName'].'</td>
-                        <td>'.'<button class="btn btn__update"><a href=""><i class="fas fa-edit"></i></a></button>&nbsp;'.
-                        '<button class="btn btn__delete"><a href="#"><i class="far fa-times-circle"></i></a></button>'.'</td>
                     </tr>
                     ';
                     $count++;

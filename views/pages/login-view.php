@@ -17,8 +17,8 @@
       <div class="forms-container">
         <div class="signin-signup">
           <form action="" method="post" autocomplete="off" class="sign-in-form" >
-            <h2 class="title">Iniciar sesión</h2>
-
+            <!-- <h2 class="title">Iniciar sesión</h2> -->
+            <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image-right" alt=""/>
             <label for="">Usuario</label>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -31,13 +31,13 @@
               <input type="password" name="passwordSignIn" required=""/>
             </div>
 
-            <input type="submit" value="Entrar" class="btn-kohaku-login"/>
+            <input type="submit" value="Ingresar" class="btn-kohaku-login"/>
           </form>
 
           <!-- se crea la ruta que conecta con el ajax,  -->
+          
           <form action="" method="post" autocomplete="off" class="sign-up-form">
-            <h1 class="title">Crear cuenta</h1>
-            
+          
             <label class="label">Nombres</label>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -67,7 +67,7 @@
               <input type="password" required="" name="passwordSignUp"/>
             </div>
 
-            <input type="submit" class="btn-kohaku-login" value="Guardar" />
+            <input type="submit" class="btn-kohaku-login" value="Crear Cuenta" />
             <p class="social-text"></p>
 
             <div class="social-media"></div>
@@ -78,8 +78,8 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-          <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image" alt=""/>
-            <h3>¿Nuevo por aquí?</h3>
+          <i class="fas fa-person-booth"></i>
+          <h3 class="title-login">¿Nueva por aquí?</h3>
             <button class="btn-kohaku-login" id="sign-up-btn">
               Regístrate
             </button>          
@@ -88,8 +88,8 @@
 
         <div class="panel right-panel">
           <div class="content">
-            <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image" alt=""/>
-            <h3>¿Ya eres miembro?</h3>
+            <img src="<?php echo SERVERURL; ?>assets/img/logoWeLove2.png" class="image-left" alt=""/>
+            <h1>¿Ya eres miembro?</h1>
              <button class="btn-kohaku-login" id="sign-in-btn">
               Iniciar sesión
             </button>
