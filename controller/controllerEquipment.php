@@ -111,12 +111,12 @@
             $table.='<div>
             <table>
                 <thead> 
-                    <td>Fecha de pago</td>
+                    <td>Fecha de registro</td>
                     <td>Nombre del Equipo</td>
                     <td>Categoría</td>
                     <td>Nombre Capitana</td>
                     <td>Teléfono</td>
-                    <td colspan="1">Acciones</td>
+                   
                 </thead>
                 <tbody>
             ';
@@ -131,8 +131,7 @@
                         <td>'.$rows['equipmentCategory'].'</td>
                         <td>'.$rows['accountFirstName'].' '.$rows['accountLastName'].'</td>
                         <td>'.$rows['equipmentPhone'].'</td>
-                        <td>'.'<button class="btn btn__update"><a href=""><i class="fas fa-edit"></i></a></button>&nbsp;'.
-                        '<button class="btn btn__delete"><a href="#"><i class="far fa-times-circle"></i></a></button>'.'</td>
+                        
                     </tr>
                     ';
                     $count++;

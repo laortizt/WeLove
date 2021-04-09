@@ -587,7 +587,7 @@ table th {
 	margin-bottom: 10px;
 }
 
-.btn-kohaku{
+.btn-welove{
 	background-color: transparent;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -602,14 +602,14 @@ table th {
 	margin: 10px;
 }
   
-  .btn-kohaku:hover{
+  .btn-welove:hover{
 	color:white ;
   }
   
-  .btn-kohaku:focus {
+  .btn-welove:focus {
 	box-shadow: none;
   }
 
-  .btn-kohaku[disabled]{
+  .btn-welove[disabled]{
 	pointer-events: none;
   }

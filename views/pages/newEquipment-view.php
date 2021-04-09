@@ -73,10 +73,10 @@ if (!is_array($equipment)) {
 
                             <?php if ($equipment == null) : ?>
                                 <input type="hidden" name="action" value="guardar">
-                                <input type="submit" class="btn-kohaku" value="Guardar" />
+                                <input type="submit" class="btn-welove" value="Guardar" />
                             <?php else : ?>
                                 <input type="hidden" name="action" value="eliminar">
-                                <input type="submit" class="btn-kohaku" value="Eliminar" />
+                                <input type="submit" class="btn-welove" value="Eliminar" />
                             <?php endif ?>
 
                             <div class="RespuestaAjax"></div>
@@ -133,10 +133,10 @@ if (!is_array($equipment)) {
 
                     <?php if ($equipment == null) : ?>
                         <input type="hidden" name="action" value="guardar">
-                        <input type="submit" class="btn-kohaku" value="Guardar" />
+                        <input type="submit" class="btn-welove" value="Guardar" />
                     <?php else : ?>
                         <input type="hidden" name="action" value="eliminar">
-                        <input type="submit" class="btn-kohaku" value="Eliminar" />
+                        <input type="submit" class="btn-welove" value="Eliminar" />
                     <?php endif ?>
 
                     <div class="RespuestaAjax"></div>

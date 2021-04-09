@@ -162,6 +162,7 @@
             $table.='<div>
             <table>
                 <thead> 
+                    
                     <td>Documento</td>
                     <td>Número</td>
                     <td>Nombres</td>
@@ -180,6 +181,7 @@
                 foreach($datos as $rows){
                     $table.='
                     <tr>
+                        
                         <td>'.$rows['nameDocumentType'].'</td>
                         <td>'.$rows['accountDni'].'</td>
                         <td>'.$rows['accountFirstName'].'</td>
@@ -189,6 +191,7 @@
                         <td>'.$rows['accountEmail'].'</td>
                         <td>'.$rows['roleName'].'</td>
                         <td>'.($rows['accountState'] == 1 ? "Activo" : "Inactivo").'</td>
+                        
                     </tr>
                     ';
                     $count++;

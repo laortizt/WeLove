@@ -25,14 +25,13 @@ session_start(['name' => 'SK']);
 	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
 
 
-
 	<!-- End import lib -->
 	<link href="<?php echo SERVERURL; ?>assets/style/dashboard.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/tournament.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/profile.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/payments.css" rel="stylesheet">
 	<link href="<?php echo SERVERURL; ?>assets/style/newPay.css" rel="stylesheet">
-	<link href="<?php echo SERVERURL; ?>assets/style/kohaku.css" rel="stylesheet">
+	<link href="<?php echo SERVERURL; ?>assets/style/welove.css" rel="stylesheet">
 	
 
 	<link href="<?php echo SERVERURL; ?>assets/sweet-alert/sweetalert2.css" rel="stylesheet">

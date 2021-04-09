@@ -46,7 +46,7 @@ $insPayment = new controllerPayment();
                                 <div class="input-container">
                                     <label class="label">Valor</label>
                                     <div class="input-field">
-                                        <i class="far fa-dollar-sign"></i>
+                                        
                                         <input type="text" readonly value="" id="price-newpay" name="price-newpay" required="" />
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@ $insPayment = new controllerPayment();
 
                             </div>
 
-                            <input type="submit" class="btn-kohaku" value="Guardar" />
+                            <input type="submit" class="btn-welove" value="Guardar" />
 
                             <div class="RespuestaAjax"></div>
                         </form>

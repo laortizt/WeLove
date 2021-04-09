@@ -10,30 +10,56 @@
     //MODELO PARA CREAR CLASE
     class modelPayment extends mainModel{
 
-        //Traer la lista de tramites
+        // Traer la lista de trámites
         public function list_procedure_model() {
             //Obtiene los trámites registrados
             $datos = mainModel::connect()->query("SELECT * FROM procedures");
             return $datos->fetchAll();
         }
 
-        //Traer la lista de detalles
+        // Traer la lista de detalles
         public function list_details_model() {
             //Obtiene los trámites registrados
             $datos = mainModel::connect()->query("SELECT * FROM details");
             return $datos->fetchAll();
         }
 
-         // Listar  Pagos
-         public function get_payment_model($code) {
-            $sql= mainModel::connect()->prepare("SELECT p.*, a.accountCode
-                FROM payments p INNER JOIN accounts a ON (p.paymentsAccount = a.idAccount) WHERE a.accountDni=:dni");
-            $sql->bindParam(':code', $code);
-            $sql->execute(); 
+        // Listar pagos de un usuario
+        public function get_user_payments_model($accountCode, $start, $limit) {
+            $conexion = mainModel::connect();
 
-            return $sql->fetch();
+            $sql = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM payments p
+                LEFT JOIN accounts a ON (p.paymentAccount = a.idAccount)
+                LEFT JOIN procedures pr ON (p.paymentProcedure = pr.idProcedures)
+                WHERE a.accountCode=:AccountCode
+                ORDER BY paymentDate DESC LIMIT $start, $limit");
+            $sql->bindParam(':AccountCode', $accountCode);
+            $sql->execute();
+
+            $result = [];
+            $result["data"] = $sql->fetchAll();
+            $result["count"] = (int) $conexion->query("SELECT found_rows()")->fetchColumn();
+
+            return $result;
         }
-        
+
+        // Listar todos los pagos registrados
+        public function get_payments_model($start, $limit) {
+            $conexion = mainModel::connect();
+
+            $sql = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM payments p
+                LEFT JOIN accounts a ON (p.paymentAccount = a.idAccount)
+                LEFT JOIN procedures pr ON (p.paymentProcedure = pr.idProcedures)
+                ORDER BY paymentDate DESC LIMIT $start, $limit");
+            $sql->execute();
+
+            $result = [];
+            $result["data"] = $sql->fetchAll();
+            $result["count"] = (int) $conexion->query("SELECT found_rows()")->fetchColumn();
+
+            return $result;
+        }
+
          //Actualizar Pagos
          public function update_payment_model($data) {
             $sql=mainModel::connect()->prepare("UPDATE payments  

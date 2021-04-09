@@ -99,18 +99,18 @@
             $table="";
 
             $page=(isset($page)&& $page>0) ? (int) $page : 1;
-            $start=($pages>0)? (($pages*$register)-$register) : 0;
-            $conexion= mainModel::connect();
+            $start=($pages>0) ? (($pages*$register)-$register) : 0;
 
-            //Calcula cúantos registros hay en la consutla
-            //aqui en la consulta el admin 1 es el principal del sistema y  NO se va a seleccionar
-            $datos = $conexion->query("SELECT SQL_CALC_FOUND_ROWS * FROM payments p
-                LEFT JOIN accounts a ON (p.paymentAccount = a.idAccount)
-                LEFT JOIN procedures pr ON (p.paymentProcedure = pr.idProcedures)
-                WHERE a.idAccount!='1' ORDER BY paymentDate DESC LIMIT $start, $register");
-            $datos=$datos->fetchAll();
-            $total=$conexion->query("SELECT found_rows()");
-            $total=(int) $total->fetchColumn();
+            $results = [];
+
+            if ($role=="Administrador") {
+                $results = modelPayment::get_payments_model($start, (int) $register);
+            } else {
+                $results = modelPayment::get_user_payments_model($_SESSION['code_sk'], $start, (int) $register);
+            }
+            
+            $datos = $results["data"];
+            $total = $results["count"];
 
             //calcular el otal de páginas
             $Npages= ceil($total/$register);

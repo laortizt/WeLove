@@ -98,7 +98,7 @@ body{
 
 }
 
-.btn-kohaku{
+.btn-welove{
   background-color:#e24e83;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -110,12 +110,22 @@ body{
   color:white;
   padding: 0.5rem 1rem;
 }
+.header-login{  
+  display:flex;
+  align-self: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;  
+  z-index:2;
+}
+
   
-  .btn-kohaku:hover{
-    background-color: rgb(53, 211, 215);;
+  .btn-welove:hover{
+    /* background-color: rgb(53, 211, 215); */
+    background-color:  #ce89e9;
   }
-  
-  .btn-kohaku:focus {
+  .btn-welove:focus {
     box-shadow: none;
   }
   /* FORMULARIOS */
@@ -194,4 +204,21 @@ body{
 
   .input-container label {
     text-align: left;
+  /* torneo */
+
   }
+  .list-team {
+    padding-bottom: 10px;
+  } 
+
+  .list-team li {
+    padding-bottom: 10px;
+    color: rgb(53, 211, 215);
+  }
+  
+  .list-team i {
+    /* padding-bottom: 10px; */
+    color: rgb(12, 12, 12);
+    margin-right: 10px;
+  }
+  
